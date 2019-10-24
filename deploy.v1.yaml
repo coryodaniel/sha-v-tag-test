@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sha-v-tag
+  name: sha-v-tag
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sha-v-tag
+
+  template:
+    metadata:
+      labels:
+        app: sha-v-tag
+    spec:
+      containers:
+        - name: sha-v-tag
+          image: quay.io/coryodaniel/sha-v-tag:0.1
+          env:
+            - name: noop
+              value: foo
